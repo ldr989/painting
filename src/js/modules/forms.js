@@ -1,11 +1,9 @@
-// import checkNumInputs from './checkNumInputs';
+import { postData } from "../services/requests";
 
 const forms = (state) => {
     const form = document.querySelectorAll('form'),
         inputs = document.querySelectorAll('input'),
         upload = document.querySelectorAll('[name="upload"]');
-
-    // checkNumInputs('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка...',
@@ -19,15 +17,6 @@ const forms = (state) => {
     const path = {
         designer: 'assets/server.php',
         question: 'assets/question.php'
-    };
-
-    const postData = async (url, data) => {
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
     };
 
     const clearInputs = () => {
