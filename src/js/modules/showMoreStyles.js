@@ -18,7 +18,7 @@ const showMoreStyles = (trigger, wrapper) => {
     btn.addEventListener('click', function() {
         getResource('assets/db.json')
             .then(res => createCards(res.styles))
-            .catch(error => console.log(error));
+            .catch(error => showError());
 
         this.remove();
     });
@@ -39,6 +39,16 @@ const showMoreStyles = (trigger, wrapper) => {
 
             document.querySelector(wrapper).appendChild(card);
         });
+    }
+
+    function showError() {
+        let errorBlock = document.createElement('div');
+
+        errorBlock.style.textAlign = 'center';
+        errorBlock.textContent = 'Что-то пошло не так :(';
+
+        document.querySelector(wrapper).appendChild(errorBlock);
+        setTimeout(() => errorBlock.remove(), 5000);
     }
 };
 
