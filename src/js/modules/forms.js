@@ -87,12 +87,16 @@ const forms = (state) => {
                 })
                 .finally(() => {
                     clearInputs();
-                    // Object.keys(state).forEach(key => delete state[key]);
                     setTimeout(() => {
+                        Object.keys(state).forEach(key => delete state[key]);
+                        if (item.classList.contains('calc_form')) {
+                            item.querySelector('.calc-price').textContent = 'Для расчета нужно выбрать размер картины и материал картины';
+                        }
                         statusMessage.remove();
                         item.style.display = 'block';
                         item.classList.remove('fadeOutUp');
                         item.classList.add('fadeInUp');
+                        item.reset();
                     }, 5000);
                 });
         });
