@@ -67,7 +67,9 @@ const forms = (state) => {
             item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
             console.log(api);
 
-            if (item.getAttribute('data-calc') === "end") {
+            if (item.classList.contains('calc_form')) {
+                state.totalCost = document.querySelector('.calc-price').textContent;
+                console.log(state);
                 for (let key in state) {
                     formData.append(key, state[key]);
                 }
@@ -85,6 +87,7 @@ const forms = (state) => {
                 })
                 .finally(() => {
                     clearInputs();
+                    // Object.keys(state).forEach(key => delete state[key]);
                     setTimeout(() => {
                         statusMessage.remove();
                         item.style.display = 'block';

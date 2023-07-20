@@ -11,14 +11,18 @@ import accordion from "./modules/accordion";
 import burger from "./modules/burger";
 import scrolling from "./modules/scrolling";
 import drop from "./modules/drop";
+import changeModalState from "./modules/changeModalState";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    let modalState = {};
+
+    changeModalState(modalState);
     modals();
     sliders('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
     sliders('.main-slider-item', 'vertical');
-    forms();
+    forms(modalState);
     mask('[name="phone"]');
     checkTextInputs('[name="name"]');
     checkTextInputs('[name="message"]');
